@@ -6,9 +6,12 @@ MDrive is a secure and reliable platform for storing, managing, and sharing file
 
 **[Try MDrive Here](https://mdrive-5.onrender.com/)**
 
-![MDrive Screenshot](https://via.placeholder.com/800x400?text=MDrive+Screenshot)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/Enrty_pt.png)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/sign-up.png)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/login-page.png)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/home-pg.png)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/upload-pop-up.png)
 
-![Alt Text](./images/image-name.png)
 
 ## Features
 
