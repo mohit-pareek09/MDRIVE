@@ -8,6 +8,8 @@ MDrive is a secure and reliable platform for storing, managing, and sharing file
 
 ![MDrive Screenshot](https://via.placeholder.com/800x400?text=MDrive+Screenshot)
 
+![Alt Text](./images/image-name.png)
+
 ## Features
 
 - **User Authentication**: Secure registration and login system
