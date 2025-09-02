@@ -57,7 +57,7 @@ router.post("/login",
 router.post("/register",
     body("email").trim().isEmail().isLength({ min: 13 }),
     body("username").trim().isLength({ min: 3 }),
-    body("password").trim().isLength({ min: 5 }),
+    body("password").trim().isLength({ min: 5 }), 
     async (req, res) => {
 
         console.log(req.body);
@@ -81,12 +81,12 @@ router.post("/register",
 
         })
         // res.json(newUser);
-        res.redirect("/") //redirect to login page.
+        res.redirect("/") //redirect to about page.
     })
 
     router.get("/logout", (req, res) => {
         res.clearCookie("token"); //clear cookie using name of cookie.
-        res.redirect("/") ;//redirect to login page.
+        res.redirect("/") ;//redirect to about page.
     });
 
 module.exports = router;
