@@ -4,11 +4,14 @@ MDrive is a secure and reliable platform for storing, managing, and sharing file
 
 ## Live Demo
 
-**[Try MDrive Here](https://mdrive-5.onrender.com/)**
+**[Try MDrive Here](https://mdrive-4.onrender.com/)**
 
-![MDrive Screenshot](https://via.placeholder.com/800x400?text=MDrive+Screenshot)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/Enrty_pt.png)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/sign-up.png)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/login-page.png)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/home-pg.png)
+![Alt text](https://raw.githubusercontent.com/mohit-pareek09/MDRIVE/main/images/upload-pop-up.png)
 
-![Alt Text](./images/image-name.png)
 
 ## Features
 
@@ -154,10 +157,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 

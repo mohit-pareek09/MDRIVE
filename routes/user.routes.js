@@ -81,12 +81,12 @@ router.post("/register",
 
         })
         // res.json(newUser);
-        res.redirect("/") //redirect to about page.
+        res.redirect("/") //redirect to login page.
     })
 
     router.get("/logout", (req, res) => {
         res.clearCookie("token"); //clear cookie using name of cookie.
-        res.redirect("/") ;//redirect to about page.
+        res.redirect("/") ;//redirect to login page.
     });
 
 module.exports = router;
