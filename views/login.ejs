@@ -7,7 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
   </head>
     <body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen">
-        <form action="/user/login" method="post" class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+        <form action="/user/login" method="post" >
             <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6">Login</h2>
             
             <div class="mb-6">
@@ -22,6 +23,10 @@
             
             <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
         </form>
+            <p class="mt-4 mb-4 text-center text-white ">Or</p>
+    <a href="/user/google" class="block w-full text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-reed-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Login with Google</a>
+    <p class="mt-4 text-center text-white">Don't have an account? <a href="/user/register" class="text-blue-500">Sign up</a></p>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   </body>

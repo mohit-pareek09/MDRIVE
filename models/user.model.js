@@ -1,6 +1,8 @@
 const mongoose = require( 'mongoose')
 const userSchema = new mongoose.Schema({    
 
+googleId: { type: String, required: false },    // New add-on
+
 username: {
     type: String,
     required: true,
@@ -20,7 +22,7 @@ email: {
 },
 password: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
     minlength: [5, 'Password must be at least 5 characters long']
 }

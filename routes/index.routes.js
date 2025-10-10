@@ -8,6 +8,7 @@ const { utils } = require('cloudinary'); // Import Cloudinary utils for signed U
 const authmiddleware = require("../middlewares/authe"); // Import the auth middleware
 
 const upload = multer({ storage: multer.memoryStorage() });
+
 router.get("/", (req, res) => {
     res.render("about");
 })  

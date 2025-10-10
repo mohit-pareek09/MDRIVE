@@ -3,6 +3,7 @@ const router = express.Router();
 const userModel = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const passport = require('passport'); // new add-on
 
 
 
@@ -30,9 +31,9 @@ router.post("/login",
             })
         }
 
-        const { username, password } = req.body; 
+        const { username, password } = req.body;
 
-        const user = await userModel.findOne({username:username}); //find user by username.
+        const user = await userModel.findOne({ username: username }); //find user by username.
 
         if (!user) {
             return res.status(400).json({
@@ -48,7 +49,7 @@ router.post("/login",
             })
         }
 
-        const token = jwt.sign({ id: user._id , email: user.email ,username:user.username}, process.env.JWT_SECRET) ;//generate token using jwt.
+        const token = jwt.sign({ id: user._id, email: user.email, username: user.username }, process.env.JWT_SECRET);//generate token using jwt.
         res.cookie("token", token); // <name>,value of token
         // res.send("Login Successfull") 
         res.redirect("/home")
@@ -57,7 +58,7 @@ router.post("/login",
 router.post("/register",
     body("email").trim().isEmail().isLength({ min: 13 }),
     body("username").trim().isLength({ min: 3 }),
-    body("password").trim().isLength({ min: 5 }), 
+    body("password").trim().isLength({ min: 5 }),
     async (req, res) => {
 
         console.log(req.body);
@@ -84,9 +85,21 @@ router.post("/register",
         res.redirect("/") //redirect to login page.
     })
 
-    router.get("/logout", (req, res) => {
-        res.clearCookie("token"); //clear cookie using name of cookie.
-        res.redirect("/") ;//redirect to login page.
-    });
+router.get("/logout", (req, res) => {
+    res.clearCookie("token"); //clear cookie using name of cookie.
+    res.redirect("/");//redirect to login page.
+});
+
+// new add-on
+
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'], session: false }));
+
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/user/login', session: false }), (req, res) => {
+  const token = jwt.sign({ id: req.user._id, email: req.user.email, username: req.user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  res.cookie('token', token, { httpOnly: true });
+  res.redirect('/home');
+});
+
+// 
 
 module.exports = router;
