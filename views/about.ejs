@@ -3,25 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-  <title>MDrive</title>
-
+  <title>MDrive - Secure Cloud Storage</title>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #1e40af 0%, #0891b2 100%);
+    }
+    @keyframes blob {
+      0%, 100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+      33% {
+        transform: translate(30px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+    .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .glow-effect {
+      box-shadow: 0 0 40px rgba(34, 211, 238, 0.6), 0 0 80px rgba(59, 130, 246, 0.4);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col ">
+<body class="bg-gray-50 dark:bg-gray-900">
+  
   <!-- Header -->
-  <header class="w-full bg-white dark:bg-gray-800 shadow-md flex-shrink-0">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <!-- Logo and Name -->
+  <header class="w-full bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center">
       <div class="flex items-center space-x-3">
-        <div class="text-3xl font-bold text-blue-600 dark:text-blue-500">MDrive</div>
+        <div class="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-500">MDrive</div>
       </div>
-      <!-- Navigation Buttons -->
-      <div class="flex space-x-4">
-        <a href="user/login" class="bg-blue-600 dark:bg-blue-500 text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
+      <div class="flex space-x-2 sm:space-x-4">
+        <a href="user/login" class="bg-blue-600 dark:bg-blue-500 text-white font-semibold px-4 sm:px-6 py-2 text-sm sm:text-base rounded-lg shadow-md hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 transform hover:scale-105">
           Login
         </a>
-        <a href="user/register" class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300">
+        <a href="user/register" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold px-4 sm:px-6 py-2 text-sm sm:text-base rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105">
           Signup
         </a>
       </div>
@@ -29,62 +81,202 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-        About MDrive
-      </h1>
-      <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8">
-        MDrive is your secure and reliable platform for storing, managing, and sharing files. Whether it's images, PDFs, or documents, our cloud-based solution ensures your files are accessible anytime, anywhere. With a user-friendly interface and robust security features, MDrive empowers individuals and teams to stay organized and productive.
-      </p>
-      <div class="flex justify-center space-x-4">
-        <a href="user/register" class="bg-blue-600 dark:bg-blue-500 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
-          Get Started
-        </a>
-        <a href="user/login" class="bg-transparent border-2 border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500 font-semibold px-8 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-gray-700 transition duration-300">
-          Login
-        </a>
+  <section class="relative overflow-hidden py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-600"></div>
+    
+    <!-- Animated Particles -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+      <div class="absolute top-40 right-10 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-8 left-1/3 w-72 h-72 bg-sky-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+    </div>
+    
+    <!-- Grid Pattern Overlay -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+    
+    <!-- Content -->
+    <div class="relative max-w-7xl mx-auto z-10">
+      <div class="text-center fade-in-up">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-4 sm:mb-6 px-2 drop-shadow-lg">
+          Store. Share. <span class="text-cyan-300">Succeed.</span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 mb-8 sm:mb-12 max-w-3xl mx-auto px-4 drop-shadow-md">
+          Experience the future of cloud storage with MDrive. Secure, fast, and accessible from anywhere in the world.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-12 sm:mb-16 px-4">
+          <a href="user/register" class="bg-white text-blue-900 font-bold px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base rounded-full shadow-xl hover:shadow-2xl transition duration-300 transform hover:scale-105 hover:bg-cyan-300">
+            Get Started Free
+          </a>
+          <a href="/" class="bg-transparent border-2 border-white text-white font-bold px-8 sm:px-10 py-3 sm:py-4 text-sm sm:text-base rounded-full hover:bg-white hover:text-blue-900 transition duration-300 transform hover:scale-105">
+            Learn More
+          </a>
+        </div>
+        
+        <!-- Floating Icon with Glow -->
+        <div class="float-animation mx-auto w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl sm:rounded-3xl shadow-2xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition duration-500 glow-effect">
+          <svg class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Features Section -->
+  <section id="features" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 px-2">
+          Why Choose MDrive?
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 px-4">
+          Powerful features designed for modern teams and individuals
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-600 p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+          <div class="bg-blue-600 w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">Bank-Level Security</h3>
+          <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+            Your files are protected with 256-bit AES encryption. We never compromise on security, ensuring your data stays private and safe.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-gray-700 dark:to-gray-600 p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+          <div class="bg-purple-600 w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">Lightning Fast</h3>
+          <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+            Upload and download files at blazing speeds. Our global CDN ensures optimal performance no matter where you are.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-gray-700 dark:to-gray-600 p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2">
+          <div class="bg-green-600 w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">Seamless Collaboration</h3>
+          <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300">
+            Share files instantly with your team. Real-time collaboration features make working together easier than ever.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 gradient-bg">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 text-center text-white">
+        <div class="py-4">
+          <div class="text-4xl sm:text-5xl font-bold mb-2">10TB+</div>
+          <div class="text-base sm:text-xl opacity-90">Storage Capacity</div>
+        </div>
+        <div class="py-4">
+          <div class="text-4xl sm:text-5xl font-bold mb-2">99.9%</div>
+          <div class="text-base sm:text-xl opacity-90">Uptime Guarantee</div>
+        </div>
+        <div class="py-4">
+          <div class="text-4xl sm:text-5xl font-bold mb-2">24/7</div>
+          <div class="text-base sm:text-xl opacity-90">Customer Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 px-2">
+        Ready to Get Started?
+      </h2>
+      <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 sm:mb-10 px-4">
+        Join thousands of users who trust MDrive for their storage needs
+      </p>
+      <a href="user/register" class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold px-10 sm:px-12 py-4 sm:py-5 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-cyan-500/50 hover:from-blue-700 hover:to-cyan-700 transition duration-300 transform hover:scale-110">
+        Start Free Trial →
+      </a>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 py-12 w-full flex-shrink-0"> ">
+  <footer class="bg-gradient-to-br from-gray-900 to-blue-900 text-white py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Logo and Name -->
-        <div class="flex flex-col items-center md:items-start">
-          <div class="text-2xl font-bold text-blue-600 dark:text-blue-500 mb-2">MDrive</div>
-          <p class="text-gray-600 dark:text-gray-400 text-sm text-center md:text-left">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <!-- Brand Section -->
+        <div class="flex flex-col items-center sm:items-start">
+          <div class="text-2xl font-bold text-cyan-400 mb-3">MDrive</div>
+          <p class="text-gray-300 text-sm text-center sm:text-left mb-4">
             Securely store and share your files with ease.
           </p>
         </div>
-        <!-- Social Media -->
-        <div class="flex flex-col items-center md:items-end">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect With Us</h3>
-          <div class="flex space-x-4">
-            <a href="https://twitter.com" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 transition duration-300">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        
+        <!-- Quick Links -->
+        <div class="flex flex-col items-center sm:items-start">
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-gray-300 text-sm">
+            <li><a href="#" class="hover:text-cyan-400 transition duration-300">About Us</a></li>
+            <li><a href="#features" class="hover:text-cyan-400 transition duration-300">Features</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition duration-300">Pricing</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition duration-300">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Support -->
+        <div class="flex flex-col items-center sm:items-start">
+          <h3 class="text-lg font-semibold mb-4">Support</h3>
+          <ul class="space-y-2 text-gray-300 text-sm">
+            <li><a href="#" class="hover:text-cyan-400 transition duration-300">Help Center</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition duration-300">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition duration-300">Terms of Service</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition duration-300">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <!-- Connect -->
+        <div class="flex flex-col items-center sm:items-start">
+          <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+          <div class="flex space-x-4 mb-4">
+            <a href="https://twitter.com" target="_blank" class="bg-gray-800 p-3 rounded-full hover:bg-cyan-600 transition duration-300 transform hover:scale-110">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
-            <a href="https://github.com" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 transition duration-300">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <a href="https://github.com" target="_blank" class="bg-gray-800 p-3 rounded-full hover:bg-cyan-600 transition duration-300 transform hover:scale-110">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2.03 1.03-2.75-.1-.25-.45-1.31.1-2.73 0 0 .84-.27 2.75.66a9.58 9.58 0 0 1 5 0c1.91-.93 2.75-.66 2.75-.66.55 1.42.2 2.48.1 2.73.65.72 1.03 1.64 1.03 2.75 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
               </svg>
             </a>
-            <a href="https://linkedin.com" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 transition duration-300">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <a href="https://linkedin.com" target="_blank" class="bg-gray-800 p-3 rounded-full hover:bg-cyan-600 transition duration-300 transform hover:scale-110">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
             </a>
           </div>
         </div>
       </div>
-      <!-- Copyright -->
-      <div class="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6 text-center">
-        <p class="text-gray-600 dark:text-gray-400 text-sm">
+      
+      <!-- Bottom Bar -->
+      <div class="border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
+        <p class="text-gray-400 text-sm mb-4 sm:mb-0">
           © 2025 MDrive. All rights reserved.
+        </p>
+        <p class="text-gray-400 text-sm flex items-center">
+          Made with <span class="text-red-500 mx-1 animate-pulse">❤️</span> by the MDrive Team
         </p>
       </div>
     </div>

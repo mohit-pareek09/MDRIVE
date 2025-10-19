@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,14 +11,17 @@
       backdrop-filter: blur(5px);
       background-color: rgba(0, 0, 0, 0.5);
     }
+
     .modal-content {
       animation: slideIn 0.3s ease-out;
     }
+
     @keyframes slideIn {
       from {
         transform: translateY(-20px);
         opacity: 0;
       }
+
       to {
         transform: translateY(0);
         opacity: 1;
@@ -25,56 +29,88 @@
     }
   </style>
 </head>
+
 <body class="bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center min-h-screen">
+
+  <header class="w-full bg-white dark:bg-gray-800 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <!-- Logo and Name -->
+      <div class="flex items-center space-x-3">
+        <div class="text-3xl font-bold text-blue-600 dark:text-blue-500">MDrive</div>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="relative">
+        <button id="dropdownUserButton" data-dropdown-toggle="dropdownUser"
+          class="flex items-center space-x-2 text-gray-900 dark:text-white bg-white dark:bg-gray-800 rounded-full px-4 py-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+          <span class="font-medium truncate max-w-[120px]">
+            <%= user.name || 'User' %>
+          </span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <!-- Dropdown Menu -->
+        <div id="dropdownUser"
+          class="hidden z-50 bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700 rounded-lg shadow w-56 mt-2 absolute right-0">
+          <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+            <div class="font-medium">
+              <%= user.name || 'User' %>
+            </div>
+            <div class="truncate">
+              <%= user.email || 'No email' %>
+            </div>
+          </div>
+          <div class="py-1">
+            <a href="user/logout"
+              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+
   <!-- Header Container for Upload Button and Profile -->
   <div class="w-full max-w-4xl flex justify-between items-center mt-8 px-4">
     <!-- Upload Button -->
-    <button id="openModalBtn" class="bg-blue-600 dark:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
+    <button id="openModalBtn"
+      class="bg-blue-600 dark:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
       Upload File
     </button>
-    <!-- Profile Section -->
-    <div class="relative">
-      <button id="dropdownUserButton" data-dropdown-toggle="dropdownUser" class="flex items-center space-x-2 text-gray-900 dark:text-white bg-white dark:bg-gray-800 rounded-full px-4 py-2 shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-        </svg>
-        <span class="font-medium truncate max-w-[120px]"><%= user.name || 'User' %></span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </button>
-      <!-- Dropdown Menu -->
-      <div id="dropdownUser" class="hidden z-50 bg-white dark:bg-gray-800 divide-y divide-gray-100 dark:divide-gray-700 rounded-lg shadow w-56 mt-2 absolute right-0">
-        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-          <div class="font-medium"><%= user.name || 'User' %></div>
-          <div class="truncate"><%= user.email || 'No email' %></div>
-        </div>
-        <div class="py-1">
-          <a href="user/logout" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</a>
-        </div>
-      </div>
-    </div>
+
   </div>
 
   <!-- File Display Section -->
   <div class="w-full max-w-4xl mt-6 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6">
     <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Your Uploaded Files</h2>
     <div class="files mt-3 flex flex-col gap-2">
-      <% if (files.length === 0) { %>
+      <% if (files.length===0) { %>
         <p class="text-center text-gray-500 dark:text-gray-400">No files uploaded yet.</p>
-      <% } else { %>
-        <% files.forEach(file => { %>
-          <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-300">
-            <h1 class="text-gray-900 dark:text-white font-medium"><%= file.originalname %></h1>
-            <a href="/download/<%= encodeURIComponent(file.public_id) %>" download="<%= file.originalname %>" class="flex items-center gap-2 text-blue-600 dark:text-blue-500 hover:text-blue-700 dark:hover:text-blue-600 transition duration-300">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-              </svg>
-              Download  
-            </a>
-          </div>
-        <% }) %>
-      <% } %>
+        <% } else { %>
+          <% files.forEach(file=> { %>
+            <div
+              class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-300">
+              <h1 class="text-gray-900 dark:text-white font-medium">
+                <%= file.originalname %>
+              </h1>
+              <a href="/download/<%= encodeURIComponent(file.public_id) %>" download="<%= file.originalname %>"
+                class="flex items-center gap-2 text-blue-600 dark:text-blue-500 hover:text-blue-700 dark:hover:text-blue-600 transition duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                Download
+              </a>
+            </div>
+            <% }) %>
+              <% } %>
     </div>
   </div>
 
@@ -82,7 +118,8 @@
   <div id="uploadModal" class="fixed inset-0 flex items-center justify-center z-50 hidden modal-bg">
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-lg p-6 relative modal-content">
       <!-- Close Button -->
-      <button id="closeModalBtn" class="absolute top-0 right-0 -mr-6 -mt-6 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100">
+      <button id="closeModalBtn"
+        class="absolute top-0 right-0 -mr-6 -mt-6 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
@@ -91,19 +128,24 @@
       <!-- Form with Drag and Drop -->
       <form action="/upload" method="post" enctype="multipart/form-data" class="space-y-4">
         <div class="flex items-center justify-center w-full">
-          <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-300">
+          <label for="dropzone-file"
+            class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-300">
             <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              <svg class="w-10 h-10 mb-3 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+              <svg class="w-10 h-10 mb-3 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
               </svg>
-              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span></p>
+              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to
+                  upload</span></p>
               <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG, GIF, PDF, DOC, TXT (Max. 10MB)</p>
             </div>
             <input id="dropzone-file" type="file" name="file" class="hidden" />
           </label>
         </div>
         <!-- Upload Button in Modal -->
-        <button type="submit" class="w-full bg-blue-600 dark:bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
+        <button type="submit"
+          class="w-full bg-blue-600 dark:bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
           Upload
         </button>
       </form>
@@ -131,4 +173,5 @@
     });
   </script>
 </body>
+
 </html>
